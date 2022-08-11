@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  competitive-40k-client:
+    container_name: competitive-40k-client
+    build: 
+      context: ./competitive-40k-client
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+       - /home/ubuntu/ssl:/etc/nginx/certs
+  
+  competitive-40k-backend:
+    restart: always
+    container_name: competitive-40k-backend
+    build: ./competitive-40k-backend/
+    expose:
+      - 5000
+    volumes:
+       - ./competitive-40k-backend:/usr/src/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=api.py
+      - FLASK_DEBUG=1

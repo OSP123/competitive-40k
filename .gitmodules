@@ -1,0 +1,6 @@
+[submodule "competitive-40k-client"]
+	path = competitive-40k-client
+	url = https://github.com/OSP123/competitive-40k-client.git
+[submodule "competitive-40k-backend"]
+	path = competitive-40k-backend
+	url = https://github.com/OSP123/competitive-40k-backend.git

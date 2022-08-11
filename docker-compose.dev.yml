@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: ./competitive-40k-client
+      dockerfile: Dockerfile.dev
+    ports:
+      - 9090:80
+
+  backend:
+    container_name: competitive-40k-server
+    build:
+      context: ./competitive-40k-server/
+      dockerfile: Dockerfile.dev
+    expose:
+      - 5000
+    volumes:
+      - ./competitive-40k-server:/usr/src/app
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=api.py
+      - FLASK_DEBUG=1
